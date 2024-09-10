@@ -1,6 +1,6 @@
 {
   "name": "ical.js",
-  "version": "2.0.1",
+  "version": "2.0.1custom1",
   "author": "Philipp Kewisch",
   "contributors": [
     "Github Contributors (https://github.com/kewisch/ical.js/graphs/contributors)"
@@ -59,6 +59,7 @@
     "test-browser": "karma start karma.conf.cjs",
     "test-all": "npm run test-unit && npm run test-acceptance && npm run test-performance && npm run test-browser",
     "build": "rollup -c",
+    "prepare": "rollup -c",
     "lint": "eslint",
     "jsdoc": "rm -rf docs/api && jsdoc --configure jsdoc-prepare.json && rm -rf docs/api && jsdoc --configure jsdoc.json --verbose",
     "validator": "node tools/scriptutils.js replace-unpkg tools/validator.html docs/validator.html",
@@ -66,7 +67,10 @@
     "ghpages": "npm run jsdoc && npm run validator && npm run recurtester"
   },
   "exports": {
-    "import": "./dist/ical.js",
+    "import": {
+      "default": "./dist/ical.js",
+      "types": "./dist/module.d.ts"
+    },
     "require": "./dist/ical.es5.cjs"
   },
   "files": [
